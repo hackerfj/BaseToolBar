@@ -1,6 +1,7 @@
 # Android BaseToolbar+StatesLayout
+### [中文版](https://github.com/luckyfj/BaseToolBar/blob/master/README_CN.md)
 ### 1.First picture，give a star
-[中文版](https://github.com/luckyfj/BaseToolBar/blob/master/README_CN.md)
+
 ![markdown](https://github.com/luckyfj/BaseToolBar/blob/master/img/test.gif "markdown")
 
 ### 2.Function introduction
