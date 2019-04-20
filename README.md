@@ -17,7 +17,24 @@
 > 4.如果你觉得基础layout不够用，可自定义添加布局XML显示</br>
 
 ###3.使用方法
-> 1.将自己的BaseActivity继承系统中BaseStateLayout方法可直接使用，下面是我写的TestBaseActivity，可参考
+####1. 添加
+> 1.1在全局build.gradle中添加
+```html
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+> 1.2在app下的build.gradle中添加
+```html
+dependencies {
+	        implementation 'com.github.luckyfj:BaseToolBar:Tag'
+	}
+```
+
+#### 2.将自己的BaseActivity继承系统中BaseStateLayout方法可直接使用，下面是我写的TestBaseActivity，可参考
 
 ```html
 package com.hackerfj.basetoolbar;
@@ -118,7 +135,7 @@ public abstract class BaseActivity extends BaseStateLayout {
 }
 
 ```
-> 2.使用Activity示例代码Kotlin
+#### 3.使用Activity示例代码Kotlin
 
 ```html
 package com.hackerfj.basetoolbar
@@ -153,7 +170,7 @@ class TestActivity : BaseActivity() {
 }
 ```
 
-> 3.使用Activity示例代码Java
+#### 4.使用Activity示例代码Java
 
 ```html
 package com.hackerfj.basetoolbar;
