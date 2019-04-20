@@ -1,9 +1,7 @@
 # Android全局状态栏+多状态布局
-[========]
 ### 1.国际惯例先上图
 ![markdown](https://github.com/luckyfj/BaseToolBar/blob/master/img/test.gif "markdown")
 
-[========]
 ### 2.功能概述
 
 #### 2.1 全局标题栏功能简介
@@ -13,12 +11,11 @@
 > 4.高度自定义封装，可直接使用商业项目
 
 #### 2.2 多状态布局
-> 1.默认已添加两种基础布局、分别为LoadingLayout和FailLayout页面，但需要自己添加页面、可直接获取View进行其他操作
+> 1.默认已添加两种基础布局、分别为LoadingLayout和FailLayout页面，但需要自己添加页面、可直接获取View进行其他操作\n
 > 2.可获取布局状态
 > 3.一行代码设置布局状态
 > 4.如果你觉得基础layout不够用，可自定义添加布局XML显示
 
-[========]
 ###3.使用方法
 > 1.将自己的BaseActivity继承系统中BaseStateLayout方法可直接使用，下面是我写的TestBaseActivity，可参考
 
