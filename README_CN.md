@@ -1,24 +1,24 @@
-# Android BaseToolbar+StatesLayout
-### 1.First picture，give a star
+# Android全局状态栏+多状态布局
+### 1.国际惯例先上图，兄弟别走给个star
 ![markdown](https://github.com/luckyfj/BaseToolBar/blob/master/img/test.gif "markdown")
 
-### 2.Function introduction
+### 2.功能概述
 
-#### 2.1 BaseToolbar Function introduction
-> 1.customize XML</br>
-> 2.One line of code controls whether the title bar is added</br>
-> 3.in BaseActivity Package basic methods such as title text, color, size, left button or text.</br>
-> 4.Highly customizable package for direct use of commercial projects</br>
+#### 2.1 全局标题栏功能简介
+> 1.自定义XML</br>
+> 2.一行代码控制标题栏是否添加</br>
+> 3.可在BaseActivity中封装基础方法，例如:标题文字、颜色、大小、左侧按钮或文字等。</br>
+> 4.高度自定义封装，可直接使用商业项目</br>
 
-#### 2.2 StatesLayout Function introduction
-> 1.Two basic layouts have been added by default、LoadingLayout And FailLayout，Need to add the page yourself、Get View directly to operate</br>
-> 2.Get layout status</br>
-> 3.One line of code sets the layout state</br>
-> 4.If you feel that the basic layout is not enough, customize the layout XML display</br>
+#### 2.2 多状态布局
+> 1.默认已添加两种基础布局、分别为LoadingLayout和FailLayout页面，但需要自己添加页面、可直接获取View进行其他操作</br>
+> 2.可获取布局状态</br>
+> 3.一行代码设置布局状态</br>
+> 4.如果你觉得基础layout不够用，可自定义添加布局XML显示</br>
 
-### 3.Instructions Function introduction
-#### 1. Add
-> 1.1 Add in global build.gradle
+### 3.使用方法
+#### 1. 添加
+> 1.1在全局build.gradle中添加
 ```html
 allprojects {
 		repositories {
@@ -27,14 +27,14 @@ allprojects {
 		}
 	}
 ```
-> 1.2 Add in the build.gradle under the app
+> 1.2在app下的build.gradle中添加
 ```html
 dependencies {
 	         implementation 'com.github.luckyfj:BaseToolBar:1.0.0'
 	}
 ```
 
-#### 2.The BaseStateLayout method in the BaseActivity inheritance system can be used directly. The following is the TestBaseActivity I wrote for reference.
+#### 2.将自己的BaseActivity继承系统中BaseStateLayout方法可直接使用，下面是我写的TestBaseActivity，可参考
 
 ```html
 package com.hackerfj.basetoolbar;
@@ -49,17 +49,17 @@ public abstract class BaseActivity extends BaseStateLayout {
 
 
     /**
-     * @return Content layout
+     * @return 内容布局
      */
     protected abstract int contentView();
 
     /**
-     * Initialization method
+     * 初始化方法
      */
     protected abstract void initViews();
 
     /**
-     * Set the content layout, because this is BaseActivity, then pass the contentView to the inherited page settings.
+     * 设置内容布局，因为这是BaseActivity则将contentView传至继承页面设置
      * @return
      */
     @Override
@@ -69,7 +69,7 @@ public abstract class BaseActivity extends BaseStateLayout {
 
 
     /**
-     * Set whether to add a Toolbar to set boolean, if set to false, setToolbar to null
+     * 设置是否添加Toolbar设置boolean，如果设置为false将setToolbar设置为null即可
      * @return
      */
     @Override
@@ -78,7 +78,7 @@ public abstract class BaseActivity extends BaseStateLayout {
     }
 
     /**
-     * Set the title bar View
+     * 设置标题栏View
      * @return
      */
     @Override
@@ -87,7 +87,7 @@ public abstract class BaseActivity extends BaseStateLayout {
     }
 
     /**
-     * Set the loading view
+     * 设置加载中View
      * @return
      */
     @Override
@@ -96,7 +96,7 @@ public abstract class BaseActivity extends BaseStateLayout {
     }
 
     /**
-     * Set load failed View
+     * 设置加载失败View
      * @return
      */
     @Override
@@ -105,7 +105,7 @@ public abstract class BaseActivity extends BaseStateLayout {
     }
 
     /**
-     * Set the initialization operation, because this is BaseActivity, then pass the initView to the inherited page settings.
+     * 设置初始化操作，因为这是BaseActivity则将initView传至继承页面设置
      * @return
      */
     @Override
@@ -114,7 +114,7 @@ public abstract class BaseActivity extends BaseStateLayout {
     }
 
     /**
-     * Example: Set the title, you can use it to do more operations,
+     * 实例：设置标题，你可以用来做更多的操作，举一反三
      * @param title
      */
     public void setToolbarTitle(String title){
@@ -123,7 +123,7 @@ public abstract class BaseActivity extends BaseStateLayout {
     }
 
     /**
-     * Dynamically set the view I want to display
+     * 动态设置我想显示的View
      * @param view
      */
     public void addView(int view){
@@ -135,7 +135,7 @@ public abstract class BaseActivity extends BaseStateLayout {
 }
 
 ```
-#### 3.Use the Activity sample code Kotlin
+#### 3.使用Activity示例代码Kotlin
 
 ```html
 package com.hackerfj.basetoolbar
@@ -149,20 +149,20 @@ class TestActivity : BaseActivity() {
     }
 
     override fun initViews() {
-        setToolbarTitle("Home")
+        setToolbarTitle("主页")
 
         tv_bar_title.setOnClickListener {
-            // Layout switched to loading
+            // 布局切换至加载中
             setLayout(com.hackerfj.statelayout.LayoutState.STATE_LOADING)
         }
         tv_bar_left.setOnClickListener {
-            // Layout switched to failure
+            // 布局切换至失败
             setLayout(com.hackerfj.statelayout.LayoutState.STATE_FAIL)
         }
         tv_bar_right.setOnClickListener {
-            // Switch layout to content page
+            // 布局切换至内容页面
 //            setLayout(LayoutState.STATE_SUCCESS)
-            // Dynamically set the view I want to display
+            //动态设置我想显示的View
             addView(R.layout.layout_my_view)
         }
     }
@@ -170,7 +170,7 @@ class TestActivity : BaseActivity() {
 }
 ```
 
-#### 4.Use the Activity sample code Java
+#### 4.使用Activity示例代码Java
 
 ```html
 package com.hackerfj.basetoolbar;
@@ -185,12 +185,12 @@ public class TestActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        setToolbarTitle("Home");
+        setToolbarTitle("主页");
 
         findViewById(R.id.tv_bar_title).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Layout switched to loading
+                // 布局切换至加载中
                 setLayout(com.hackerfj.statelayout.LayoutState.STATE_LOADING);
             }
         });
@@ -198,16 +198,16 @@ public class TestActivity extends BaseActivity {
         findViewById(R.id.tv_bar_left).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Layout switched to failure
+                // 布局切换至失败
                 setLayout(com.hackerfj.statelayout.LayoutState.STATE_FAIL);
             }
         });
         findViewById(R.id.tv_bar_right).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Switch layout to content page
+                // 布局切换至内容页面
 //            setLayout(LayoutState.STATE_SUCCESS)
-                // Dynamically set the view I want to display
+                //动态设置我想显示的View
                 addView(R.layout.layout_my_view);
             }
         });
