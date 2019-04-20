@@ -1,5 +1,5 @@
 # Android全局状态栏+多状态布局
-### 1.国际惯例先上图
+### 1.国际惯例先上图，兄弟别走给个star
 ![markdown](https://github.com/luckyfj/BaseToolBar/blob/master/img/test.gif "markdown")
 
 ### 2.功能概述
