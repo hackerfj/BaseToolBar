@@ -30,7 +30,7 @@ allprojects {
 > 1.2在app下的build.gradle中添加
 ```html
 dependencies {
-	        implementation 'com.github.luckyfj:BaseToolBar:Tag'
+	         implementation 'com.github.luckyfj:BaseToolBar:1.0.0'
 	}
 ```
 
