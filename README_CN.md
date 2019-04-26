@@ -2,6 +2,10 @@
 ### 1.国际惯例先上图，兄弟别走给个star
 ![markdown](https://github.com/luckyfj/BaseToolBar/blob/master/img/test.gif "markdown")
 
+### 1.2更新提示
+> V1.0.1版本更新提示
+> 增加了对Fragment的支持
+
 ### 2.功能概述
 
 #### 2.1 全局标题栏功能简介
@@ -30,7 +34,7 @@ allprojects {
 > 1.2在app下的build.gradle中添加
 ```html
 dependencies {
-	         implementation 'com.github.luckyfj:BaseToolBar:1.0.0'
+	         implementation 'com.github.luckyfj:BaseToolBar:v1.0.1'
 	}
 ```
 

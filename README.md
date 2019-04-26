@@ -1,9 +1,13 @@
 # Android BaseToolbar+StatesLayout
-[！[]（https://jitpack.io/v/luckyfj/BaseToolBar.svg）（https://jitpack.io/#luckyfj/BaseToolBar
 ### [中文版](https://github.com/luckyfj/BaseToolBar/blob/master/README_CN.md)
 ### 1.First picture，give a star
 
 ![markdown](https://github.com/luckyfj/BaseToolBar/blob/master/img/test.gif "markdown")
+
+### 1.2 Update prompt
+> V1.0.1 Update prompt
+> Added support for Fragment
+
 
 ### 2.Function introduction
 
@@ -33,7 +37,7 @@ allprojects {
 > 1.2 Add in the build.gradle under the app
 ```html
 dependencies {
-	         implementation 'com.github.luckyfj:BaseToolBar:1.0.0'
+	         implementation 'com.github.luckyfj:BaseToolBar:v1.0.1'
 	}
 ```
 
