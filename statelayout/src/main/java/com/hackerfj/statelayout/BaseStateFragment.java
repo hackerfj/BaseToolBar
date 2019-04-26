@@ -1,17 +1,15 @@
 package com.hackerfj.statelayout;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-/**
- * @author jiefu
- */
-public abstract class BaseStateLayout extends AppCompatActivity {
-
+public abstract class BaseStateFragment extends Fragment {
     /**
      * 成功View
      */
@@ -38,12 +36,6 @@ public abstract class BaseStateLayout extends AppCompatActivity {
     private BaseToolbar toolbar;
 
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setLayout();
-    }
-
     protected abstract int setContentLayout();
 
     protected abstract boolean isAddToolBar();
@@ -54,24 +46,32 @@ public abstract class BaseStateLayout extends AppCompatActivity {
 
     protected abstract int setFailView();
 
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        initView();
+        return setLayout(container);
+    }
+
     /**
      * 初始化加载布局
      */
-    private void setLayout() {
+    private View setLayout(ViewGroup container) {
         if (isAddToolBar()) {
-            toolbar = new BaseToolbar(this, setToolbar());
+            toolbar = new BaseToolbar(getContext(), setToolbar());
             toolbar.addView(successView());
             toolbar.addView(loadingView());
             toolbar.addView(failView());
-            setContentView(toolbar);
+            return toolbar;
         } else {
-            setContentView(setContentLayout());
+            return View.inflate(getContext(), setContentLayout(), container);
         }
-        initView();
     }
 
     /**
      * 设置布局状态
+     *
      * @param state 状态
      */
     public void setLayout(int state) {
@@ -104,9 +104,10 @@ public abstract class BaseStateLayout extends AppCompatActivity {
 
     /**
      * 动态设置我想显示的View
+     *
      * @param view
      */
-    public void setMyView(View view){
+    public void setMyView(View view) {
         getBaseToolbar().addView(view);
         success.setVisibility(View.GONE);
         loading.setVisibility(View.GONE);
@@ -115,7 +116,6 @@ public abstract class BaseStateLayout extends AppCompatActivity {
     }
 
     /**
-     *
      * @return 获取当前布局状态
      */
     public int getLayoutState() {
@@ -123,7 +123,6 @@ public abstract class BaseStateLayout extends AppCompatActivity {
     }
 
     /**
-     *
      * @return 返回BaseToolbar方便直接在BaseActivity中封装基本方法，例如统一封装设置主题文字内容、大小、颜色等。
      */
     public BaseToolbar getBaseToolbar() {
@@ -131,22 +130,20 @@ public abstract class BaseStateLayout extends AppCompatActivity {
     }
 
     /**
-     *
      * @return 初始化加载中页面
      */
     public View loadingView() {
-        loading = View.inflate(this, setLoadingView(), null);
+        loading = View.inflate(getContext(), setLoadingView(), null);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         loading.setLayoutParams(params);
         return loading;
     }
 
     /**
-     *
      * @return 初始化成功页面
      */
     public View successView() {
-        success = View.inflate(this, setContentLayout(), null);
+        success = View.inflate(getContext(), setContentLayout(), null);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         success.setLayoutParams(params);
         return success;
@@ -154,11 +151,10 @@ public abstract class BaseStateLayout extends AppCompatActivity {
 
 
     /**
-     *
      * @return 初始化失败页面
      */
     public View failView() {
-        fail = View.inflate(this, setFailView(), null);
+        fail = View.inflate(getContext(), setFailView(), null);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         fail.setLayoutParams(params);
         return fail;
@@ -168,5 +164,4 @@ public abstract class BaseStateLayout extends AppCompatActivity {
      * 初始化方法
      */
     public abstract void initView();
-
 }
