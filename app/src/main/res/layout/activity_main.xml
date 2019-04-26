@@ -8,13 +8,9 @@
         android:background="@color/colorPrimary"
         tools:context=".MainActivity">
 
-    <TextView
-            android:id="@+id/tv_test"
-            android:gravity="center"
+    <fragment
+            android:id="@+id/TODO"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello World!"
-            android:textColor="#FFF"
-            android:textSize="20sp"/>
-
+            android:name="com.hackerfj.basetoolbar.TestFragment"/>
 </LinearLayout>
